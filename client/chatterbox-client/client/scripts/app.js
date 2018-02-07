@@ -23,9 +23,9 @@ var app = {
     app.startSpinner();
     app.fetch(false);
 
-    // setInterval(function() {
-    //   app.fetch(true);
-    // }, 3000);
+    setInterval(function() {
+      app.fetch(true);
+    }, 15000);
 
     setTimeout(function() { console.log(app.dataStore); }, 2000);
   },
@@ -36,7 +36,7 @@ var app = {
     $.ajax({
       url: app.server,
       type: 'POST',
-      data: message,
+      data: JSON.stringify(message),
       success: function (data) {
         console.log('Chatterbox: Message Sent');
         app.$message.val('');
@@ -194,5 +194,3 @@ var app = {
 $('document').ready(function() {
   app.init();
 });
-
-
